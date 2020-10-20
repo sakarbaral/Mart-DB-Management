@@ -1,0 +1,32 @@
+#head-supp {
+    text-align: center;
+    font-size: 80px;
+}
+.container {
+    text-align: center;
+}
+.btn-dark {
+    margin-top: 130px;
+    font-size: 30px;
+    width: 200px;
+    height: 100px;
+    
+}
+/* body {
+    background-image: url("img/Suppliers.jpg");
+    background-repeat: no-repeat;
+    
+    background-size: cover;
+    height: 50%;
+    
+} */
+.col2 {
+    margin-right: 200px;
+}
+.col1 {
+    margin-left: 200px;
+}
+body img{
+    height: 100%;
+    opacity: 0.1;
+}

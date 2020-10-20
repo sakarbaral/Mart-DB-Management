@@ -1,0 +1,45 @@
+ion-icon {
+    font-size: 80px;
+    color: orangered;
+    /* color: rebeccapurple; */
+  }
+.all-icons {
+    text-align: center;
+    margin-top: 55px;
+}
+#main-heading {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 80px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+a {
+    color: #000000;
+    text-decoration: none;
+
+}
+
+a:hover 
+{
+     color: white; 
+}
+
+p {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+body {
+    background-image: url(/img/main-img.jpg);
+    background-size: cover;
+}
+
+
+
+
+
+img {
+    opacity: 0;
+}

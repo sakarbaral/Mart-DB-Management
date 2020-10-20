@@ -1,0 +1,146 @@
+<%- include('top'); -%>
+<style>
+  .btn {
+    border-radius: 5px;
+    margin: 10px;
+  }
+  .update,
+  .insert,
+  .search,
+  .Delete {
+    margin-left: 15px;
+  }
+  .table {
+    width:70%;
+    margin:auto;
+  }
+  body {
+    text-align: center;
+    background-image: url(/img/supplier.jpg);
+    background-size: cover;    
+  }
+
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
+
+<h1 style="text-align: center; font-weight:500; font-size: 60px;">Suppliers</h1>
+
+
+<button id="searchbutton" style="margin-top: 50px;" class="btn btn-primary">To Search</button>
+<button id="button-delete" style="margin-top: 50px;" class="btn btn-primary">For Deleting</button>
+<button id="button-insert" style="margin-top: 50px;" class="btn btn-primary">For Inserting</button>
+<button id="button-update" style="margin-top: 50px;" class="btn btn-primary">For Updating</button>
+
+
+<body>
+
+  
+  <div class="search  form-group">
+
+    <form action="/suppsearch" method="post" autocomplete="off" >
+    <input type="text" name="search" id="search" placeholder="Supplier-ID/Name/Address"><br>
+    <input type="text" name="consearch" id="consearch" placeholder="Contact Number"><br><br>
+    <button type="submit" id="searchbtn" class="btn btn-success">Search</button><br>
+    
+    </form>
+    
+
+  </div>
+
+  <div class="Delete">
+    <form action="/suppliers" method="post" autocomplete="off">
+    <input type="text" id="updateid" name="updateid" placeholder="Supplier-ID"><br>
+    <button type="submit" id='deletebtn' class="btn btn-success">Delete</button>
+  </form>
+  </div>
+
+  <div class="insert">
+    <form action="/suppliersins" method="post" autocomplete="off">
+      <input type="text" id="insert_supp_id" name="insert_supp_id" placeholder="Supplier-ID"><br>
+      <input type="text" id="insert_supp_name" name="insert_supp_name" placeholder="Name"><br>
+      <input type="text" id="insert_supp_add" name="insert_supp_add" placeholder="Address"><br>
+      <input type="text" id="insert_supp_cno" name="insert_supp_cno" placeholder="Contact number"><br>
+
+      <button type="submit" id='insertbtn' class="btn btn-success">Insert</button>
+    </form>
+  </div>
+
+  <div class="update">
+    <form action="/suppliersupd" method="post" autocomplete="off">
+      <input type="text" id="update_supp_id" name="update_supp_id" placeholder="Supplier id"><br>
+
+      <input type="text" id="update_supp_name" name="update_supp_name" placeholder="Name"><br>
+
+      <input type="text" id="update_supp_add" name="update_supp_add" placeholder="Address"><br>
+
+      <input type="text" id="update_supp_cno" name="update_supp_cno" placeholder="Contact number"><br>
+      <button type="submit" id='updatebtn' class="btn btn-success">Update</button>
+    </form>
+  </div>
+
+
+
+    <table class="table table-dark " style="margin-top:50px;">
+        <thead>
+          <tr>
+            <th scope="col">Supplier ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Contact number</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%  for(var i=0;i<supplier_rows.length ;i++){%>
+                
+          <tr>
+            <th scope="row"><%= supplier_rows[i].sup_id%></th>
+            <td><%= supplier_rows[i].name%></td>
+            <td><%= supplier_rows[i].address%></td>
+            <td><%= supplier_rows[i].contact_no%></td>
+          </tr>
+          <%}%>
+        </tbody>
+      </table>
+
+
+      <script>
+        $(".Delete").hide();
+        $(".insert").hide();
+        $(".update").hide();
+        $(".search").hide();
+
+
+          $("#button-delete").click(function(){
+            $(".insert").hide();
+          $(".update").hide();
+          $(".search").hide();
+            $(".Delete").toggle();
+          });
+
+          $("#button-insert").click(function(){
+            $(".update").hide();
+          $(".search").hide();
+            $(".Delete").hide();
+            $(".insert").toggle();
+          });
+          $("#button-update").click(function(){
+            $(".search").hide();
+            $(".Delete").hide();
+            $(".insert").hide();
+            $(".update").toggle();
+          });
+          
+          $("#searchbutton").click(function(){
+            $(".Delete").hide();
+            $(".insert").hide();
+            $(".update").hide();
+            $(".search").toggle();
+            
+          });
+          $("#btn-modal").click(function(){
+          $("#exampleModal").modal();
+          }); 
+          
+      </script>
+
+      <%- include('bottom'); -%>
