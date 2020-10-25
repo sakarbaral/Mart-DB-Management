@@ -3,7 +3,7 @@ const app=express();
 const mysql=require('mysql');
 let ejs = require('ejs');
 const bodyParser=require('body-parser');
-const { query } = require('express');
+// const { query } = require('express');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));
@@ -204,7 +204,7 @@ app.post('/items',function(req,res){
         
         else{
             console.log("Successfully Deleted")
-        res.redirect("/items");
+            res.redirect("/items");
         }
     }
     
@@ -226,10 +226,11 @@ app.post('/itemsins',function(req,res){
         }
         else{
             console.log("Successfully inserted items");
+            res.redirect("/items");
+
            
         }
       });
-      res.redirect("/items");
 });
 
 
@@ -245,10 +246,10 @@ app.post('/itemsupd',function(req,res){
         }
         else{
             console.log("Successfully updated");
-         
+            res.redirect("/items")
+
         }
       });
-      res.redirect("/items")
 });
 
 // ------------------------END for update in items--------------------------------
@@ -362,10 +363,10 @@ app.post('/branchupd',function(req,res){
         }
         else{
             console.log("Successfully updated");
-         
+            res.redirect("/branch")
+
         }
       });
-      res.redirect("/branch")
 });
 
 // ------------------------END for update in branch--------------------------------
@@ -656,10 +657,10 @@ app.post('/vehupd',function(req,res){
         }
         else{
             console.log("Successfully updated");
-         
+            res.redirect("/vehicles")
+
         }
       });
-      res.redirect("/vehicles")
 });
 
 // ------------------------END for update in vehicles--------------------------------
@@ -727,8 +728,9 @@ app.post('/stock',function(req,res){
             }
             else{
             console.log("Successfully Deleted");
+            res.redirect("/stock");
+
         };
-        res.redirect("/stock");
         
     };
       });
@@ -748,10 +750,11 @@ app.post('/stockins',function(req,res){
         }
         else{
             console.log("Successfully inserted");
+            res.redirect("/stock")
+
            
         }
       });
-      res.redirect("/stock")
 });
 
 
@@ -767,10 +770,11 @@ app.post('/stockupd',function(req,res){
         }
         else{
             console.log("Successfully updated");
+            res.redirect("/stock")
+
          
         }
       });
-      res.redirect("/stock")
 });
 
 // ------------------------END for update in stock--------------------------------
@@ -877,8 +881,9 @@ app.post('/staff',function(req,res){
             }
             else{
             console.log("Successfully Deleted");
+            res.redirect("/staff");
+
         };
-        res.redirect("/staff");
         
     };
       });
